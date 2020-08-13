@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "94890729977",
+    "firebase_url": "https://max-express.firebaseio.com",
+    "project_id": "max-express",
+    "storage_bucket": "max-express.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94890729977:android:fba1a73141e17f8558dd28",
+        "android_client_info": {
+          "package_name": "com.netailab.maxexpress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94890729977-dq7uiqedv0ch3r8ejmis56gtpo8gum11.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.netailab.maxexpress",
+            "certificate_hash": "a149fbdbfda49f0b1879b9a9cae9b4b02b599589"
+          }
+        },
+        {
+          "client_id": "94890729977-fj6biipao144q2j3rdh3l8l0dnk6e082.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDof6Ccjd31NqMcwu1vAcPoT7UaqQgsR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94890729977-fj6biipao144q2j3rdh3l8l0dnk6e082.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
