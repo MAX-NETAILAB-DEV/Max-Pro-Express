@@ -3,4 +3,10 @@
     <string name="banner">Visita la ciudad con toda la seguridad del mundo</string>
     <string name="conductor">CONDUCTOR</string>
     <string name="cliente">CLIENTE</string>
+    <string name="seleccione_una_opcion">Seleccione una opción</string>
+    <string name="iniciar_sesion">INICIAR SESION</string>
+    <string name="registrarme">REGISTRARME</string>
+    <string name="nombres">Nombres</string>
+    <string name="correo">Correo</string>
+    <string name="clave">Clave</string>
 </resources>
