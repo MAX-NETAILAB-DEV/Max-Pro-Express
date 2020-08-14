@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextInputEditText input_correo, input_clave;
     Button btn_login;
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
     DatabaseReference mDatabaseReference;
 
     @Override
@@ -52,24 +53,27 @@ public class LoginActivity extends AppCompatActivity {
 
         if (!email.isEmpty() && !clave.isEmpty()) {
             if (clave.length() >= 6) {
-                mAuth.createUserWithEmailAndPassword(email, clave).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, "Login Exitoso", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(LoginActivity.this, "La contraseña o el password son incorrectos", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                mAuth.signInWithEmailAndPassword(email, clave)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Toast.makeText(LoginActivity.this, "exito", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(LoginActivity.this, "algo salio mal", Toast.LENGTH_SHORT).show();
+                                }
+
+                                // ...
+                            }
+                        });
+            } else {
+                Toast.makeText(LoginActivity.this, "La contraseña debe tener minino 6 caracteres", Toast.LENGTH_SHORT).show();
             }
+        } else {
+            Toast.makeText(LoginActivity.this, "El correo y la contraseña son obligatorios", Toast.LENGTH_SHORT).show();
         }
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-    }
 }
