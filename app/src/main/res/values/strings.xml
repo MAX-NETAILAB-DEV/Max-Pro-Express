@@ -9,4 +9,5 @@
     <string name="nombres">Nombres</string>
     <string name="correo">Correo</string>
     <string name="clave">Clave</string>
+    <string name="ingresar">INGRESAR</string>
 </resources>
