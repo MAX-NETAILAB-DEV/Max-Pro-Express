@@ -2,7 +2,9 @@ package com.netailab.maxexpress;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import dmax.dialog.SpotsDialog;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login;
     FirebaseAuth mAuth;
     DatabaseReference mDatabaseReference;
+    AlertDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-
+mDialog = new SpotsDialog.Builder().setContext(LoginActivity.this).setMessage("Validando sus datos").build();
         input_correo = findViewById(R.id.input_correo);
         input_clave = findViewById(R.id.input_clave);
         btn_login = findViewById(R.id.btn_ingresar);
@@ -53,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (!email.isEmpty() && !clave.isEmpty()) {
             if (clave.length() >= 6) {
+                mDialog.show();
                 mAuth.signInWithEmailAndPassword(email, clave)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -65,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "algo salio mal", Toast.LENGTH_SHORT).show();
                                 }
 
-                                // ...
+                                mDialog.dismiss();
                             }
                         });
             } else {
