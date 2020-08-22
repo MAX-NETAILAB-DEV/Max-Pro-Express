@@ -11,7 +11,7 @@ import android.widget.Button;
 public class SelectOptionAuthActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    Button btnIniciarSesion,btnRegistrarme;
+    Button btnIniciarSesion, btnRegistrarme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +36,19 @@ public class SelectOptionAuthActivity extends AppCompatActivity {
         btnRegistrarme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                navegarVistaRegister();
             }
         });
 
     }
 
+    private void navegarVistaRegister() {
+        Intent intent = new Intent(SelectOptionAuthActivity.this,RegisterActivity.class);
+        startActivity(intent);
+    }
+
     private void navegarVistaLogin() {
-        Intent intent = new Intent(SelectOptionAuthActivity.this,LoginActivity.class);
+        Intent intent = new Intent(SelectOptionAuthActivity.this, LoginActivity.class);
         startActivity(intent);
 
     }

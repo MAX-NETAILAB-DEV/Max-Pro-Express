@@ -2,6 +2,7 @@ package com.netailab.maxexpress;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import dmax.dialog.SpotsDialog;
 
 import android.app.AlertDialog;
@@ -27,15 +28,20 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference mDatabaseReference;
     AlertDialog mDialog;
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Login");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mAuth = FirebaseAuth.getInstance();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-mDialog = new SpotsDialog.Builder().setContext(LoginActivity.this).setMessage("Validando sus datos").build();
+        mDialog = new SpotsDialog.Builder().setContext(LoginActivity.this).setMessage("Validando sus datos").build();
         input_correo = findViewById(R.id.input_correo);
         input_clave = findViewById(R.id.input_clave);
         btn_login = findViewById(R.id.btn_ingresar);
